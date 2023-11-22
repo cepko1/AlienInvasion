@@ -3,6 +3,8 @@ import sys
 import pygame
 
 from settings import Settings
+from ship import Ship
+
 
 class AlienInvasion:
     """Basic class for game"""
@@ -14,7 +16,7 @@ class AlienInvasion:
 
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption(self.settings.caption)
-
+        self.ship = Ship(self)
 
     def run_game(self):
         """Start main game"""
@@ -26,6 +28,7 @@ class AlienInvasion:
 
             #Renew background
             self.screen.fill(self.settings.bg_color)
+            self.ship.blime()
             # Show screen
             pygame.display.flip()
 
