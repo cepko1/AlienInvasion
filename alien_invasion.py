@@ -18,19 +18,29 @@ class AlienInvasion:
         pygame.display.set_caption(self.settings.caption)
         self.ship = Ship(self)
 
+    def _check_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+    def _update_screen(self):
+        # Renew background
+        self.screen.fill(self.settings.bg_color)
+        self._draw_sky()
+        self.ship.blime()
+        # Show screen
+        pygame.display.flip()
+
+    def _draw_sky(self):
+        # draw sky with in top of screen
+        pygame.draw.rect(self.screen, "blue", (0, 0, 1200, 100))
+
     def run_game(self):
         """Start main game"""
         while True:
             # Keyboard and mouse checking
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
-
-            #Renew background
-            self.screen.fill(self.settings.bg_color)
-            self.ship.blime()
-            # Show screen
-            pygame.display.flip()
+            self._check_events()
+            self._update_screen()
 
 
 if __name__ == "__main__":
