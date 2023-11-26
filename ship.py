@@ -29,10 +29,20 @@ class Ship:
 
     def update(self):
         """update ship position by indication of movement"""
-        if self.moving_right and self.rect.right < self.screen_rect.right:
-            self.x += self.settings.ship_speed
-        if self.moving_left and self.rect.left >0:
-            self.x -= self.settings.ship_speed
+        #  if borders enable the ship goes to screen border only
+        if self.settings.border:
+            if self.moving_right and self.rect.right < self.screen_rect.right:
+                self.x += self.settings.ship_speed
+            if self.moving_left and self.rect.left > 0:
+                self.x -= self.settings.ship_speed
+        # if borders disabled ship goes trought the screen border and appear in other side
+        else:
+            if self.moving_right:
+                self.x += self.settings.ship_speed
+            if self.moving_left:
+                self.x -= self.settings.ship_speed
+            self.x = self.x % self.screen_rect.width
+
 
         #update ship object
         self.rect.x = self.x

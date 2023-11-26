@@ -11,6 +11,7 @@ class Settings:
         self.fullscreen = False
         # ship settings
         self.ship_speed = 1.5
+        self.border = False
 
         # debug mode
         self.debug = False
