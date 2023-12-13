@@ -11,7 +11,7 @@ class Settings:
         self.fullscreen = False
         # ship settings
         self.ship_speed = 1.5
-        self.border = False  # is screen border hard
+        self.border = True  # is screen border hard
 
         # bullet settings
         self.bullet_speed = 1.0
